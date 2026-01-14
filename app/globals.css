@@ -1,0 +1,285 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom Scrollbar Styling */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Shine animation for buttons */
+@keyframes shine {
+  0% { transform: translateX(-100%) skewX(-30deg); }
+  100% { transform: translateX(200%) skewX(-30deg); }
+}
+
+.animate-shine {
+  animation: shine 1.5s infinite linear;
+}
+
+/* Hide scrollbar for product navigation */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hero Section Background Animations */
+@keyframes gradient-shift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes pattern-move {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(40px, 40px);
+  }
+}
+
+@keyframes glow-pulse {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+.hero-gradient-animated {
+  background: linear-gradient(-45deg, #ffffff, #f8f9fa, #ffffff, #f0f4ff);
+  background-size: 400% 400%;
+  animation: gradient-shift 15s ease infinite;
+}
+
+.hero-pattern-animated {
+  animation: pattern-move 20s linear infinite;
+}
+
+.hero-glow-animated {
+  animation: glow-pulse 4s ease-in-out infinite;
+}
+
+/* Device Carousel Transition Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.hero-content-enter {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.hero-text-enter {
+  animation: fadeIn 0.5s ease-out;
+}
+
+.hero-feature-enter {
+  animation: slideInLeft 0.5s ease-out;
+}
+
+.hero-feature-enter-delay-1 {
+  animation: slideInLeft 0.5s ease-out 0.1s both;
+}
+
+.hero-feature-enter-delay-2 {
+  animation: slideInLeft 0.5s ease-out 0.2s both;
+}
+
+.hero-feature-enter-delay-3 {
+  animation: slideInLeft 0.5s ease-out 0.3s both;
+}
+
+.hero-feature-enter-delay-4 {
+  animation: slideInLeft 0.5s ease-out 0.4s both;
+}
+
+.hero-feature-enter-delay-5 {
+  animation: slideInLeft 0.5s ease-out 0.5s both;
+}
+
+/* 3D Phone Rotation Animation */
+@keyframes rotate3d {
+  0% {
+    transform: perspective(1000px) rotateY(0deg) rotateX(5deg);
+  }
+  100% {
+    transform: perspective(1000px) rotateY(360deg) rotateX(5deg);
+  }
+}
+
+.phone-3d-rotate {
+  animation: rotate3d 20s linear infinite;
+  transform-style: preserve-3d;
+}
+
+.phone-3d-container {
+  perspective: 1000px;
+  transform-style: preserve-3d;
+}
+
+.phone-3d-image {
+  transition: transform 0.1s ease-out;
+  transform-style: preserve-3d;
+  filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.3));
+}
+
+/* Premium 3D Model Viewer Styling */
+phone-3d-model,
+model-viewer {
+  --poster-color: transparent;
+  --progress-bar-color: transparent;
+  --progress-mask: transparent;
+  background: transparent !important;
+  display: block;
+}
+
+model-viewer::part(default-ar-button) {
+  display: none;
+}
+
+model-viewer::part(poster) {
+  background: transparent !important;
+  display: none;
+}
+
+model-viewer::part(default-progress-bar) {
+  display: none;
+}
+
+model-viewer::part(default-progress-mask) {
+  display: none;
+}
+
+/* Smooth loading animation */
+model-viewer {
+  animation: fadeIn 1s ease-in;
+}
+
+/* Ensure model is centered and premium looking */
+.phone-3d-model {
+  filter: drop-shadow(0 50px 100px rgba(0, 0, 0, 0.7));
+  max-width: 320px;
+  max-height: 580px;
+  object-fit: contain;
+  overflow: visible !important;
+  contain: none !important;
+}
+
+/* Ensure model-viewer doesn't clip content */
+model-viewer {
+  overflow: visible !important;
+  contain: none !important;
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* Prevent clipping in parent containers */
+model-viewer::part(default-ar-button),
+model-viewer::part(default-progress-bar),
+model-viewer::part(default-progress-mask) {
+  display: none;
+}
+
+/* Ensure canvas renders fully */
+model-viewer canvas {
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  model-viewer,
+  .phone-3d-model {
+    max-width: 280px !important;
+    max-height: 320px !important;
+  }
+}
